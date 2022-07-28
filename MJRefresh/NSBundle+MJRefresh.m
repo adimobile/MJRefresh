@@ -17,12 +17,11 @@ static NSBundle *mj_systemI18nBundle = nil;
 + (instancetype)mj_refreshBundle
 {
     static NSBundle *refreshBundle = nil;
+
+    NSBundle *containnerBundle = [NSBundle bundleForClass:[MJRefreshComponent class]];
+
     if (refreshBundle == nil) {
-#ifdef MJ_SPM
-        NSBundle *containnerBundle = SWIFTPM_MODULE_BUNDLE;
-#else
         NSBundle *containnerBundle = [NSBundle bundleForClass:[MJRefreshComponent class]];
-#endif
         refreshBundle = [NSBundle bundleWithPath:[containnerBundle pathForResource:@"MJRefresh" ofType:@"bundle"]];
     }
     return refreshBundle;
